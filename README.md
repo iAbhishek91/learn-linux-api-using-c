@@ -54,3 +54,26 @@ ldd <dynamically liked program> | grep libc
 - **from program**:
   - there are again two way by checking  a constant or by calling a library function. *However due to portability of this constants they are rarely used, the constants are __GLIBC__, __GLIBC_MINOR__*.
   - Library function `gnu_get_libc_version()` to determine the version of libc.
+
+## Checking return value
+
+- always check return value, few system call/library function calls do NOT return values and are always success *for example: getpid()*
+
+### how to handle system call errors
+
+**For system call failure**:
+
+- Usually return value of error is -1, handle that using if conditions.
+- <error.h> header file declares a errno variable and list of constants which starts with "E", *for example: EINTR*.
+- Important, mostly Linux do not reset the errno to 0, on successful system call, hence its better to check the function return value indicates an error, and then check the errno.
+- In case system call returns -1 on success *for example: getpriority()*, set the errno to 0 prior to those system calls.
+- Error constants are used to determine the nature of the error occurred. `perror()` and `strerror()` library function helps in that.
+- `perror()` prints a string starting my the error string provided, followed by message corresponds to the current value of errno.
+- `strerror()` function returns the error string corresponds to error number.
+
+**For library function failure**:
+
+- library function returns various error message and data type to indicate failure.
+- Few library function sets the errno and return error exactly as system call, and act similar to system calls failure. *for example: remove()*.
+- Few library function and set errno as system call, but return to -1. *for example: fopen()*. `perror()` or `strerror()` functions can be used to diagnose the error.
+- Other library functions doesn't use errno at all. Hence we cant use `perror()` and `strerror()`.
