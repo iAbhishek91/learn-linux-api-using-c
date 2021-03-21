@@ -7,6 +7,12 @@
 - Compile it using gcc `./file_name.c` *this generates a a.out file*
 - Execute the program `./a.out`
 
+## Keywords
+
+Keywords conveys meanings how compiler transform those code and interprets it while execution.
+
+Refer src/00-keywords
+
 ## System calls
 
 Are call to the glibc(or any other library functions) wrapper functions(in the user mode). These function inturn calls the Trap handler(common for all system call, and is mostly termed as entry point to Kernel, it does some pre-requisite before calling the system routing. These are like identifying which system routine is called). Ultimately system routine is called and the result is traversed back to the stack (system routine, trap handler, wrapper function, to application program).
@@ -80,4 +86,8 @@ ldd <dynamically liked program> | grep libc
 
 ## Trace a system call
 
-Know how to trace a system call made from a program. Refer 'src/02-strace'
+Know how to trace a system call made from a program. Refer 'src/02-strace'.
+
+## Passing command line arguments
+
+Refer 'src/03-cmd-line-args'
