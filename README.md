@@ -1,5 +1,12 @@
 # Linux and Unix API
 
+## Executing C in Linux
+
+- Almost all Linux have gcc installed, if not install gcc
+- Write a program *for identification end it with .c*
+- Compile it using gcc `./file_name.c` *this generates a a.out file*
+- Execute the program `./a.out`
+
 ## System calls
 
 Are call to the glibc(or any other library functions) wrapper functions(in the user mode). These function inturn calls the Trap handler(common for all system call, and is mostly termed as entry point to Kernel, it does some pre-requisite before calling the system routing. These are like identifying which system routine is called). Ultimately system routine is called and the result is traversed back to the stack (system routine, trap handler, wrapper function, to application program).
