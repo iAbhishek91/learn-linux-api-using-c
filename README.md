@@ -52,7 +52,7 @@ ldd <dynamically liked program> | grep libc
 ```
 
 - **from program**:
-  - there are again two way by checking  a constant or by calling a library function. *However due to portability of this constants they are rarely used, the constants are __GLIBC__, __GLIBC_MINOR__*.
+  - there are again two way by checking  a constant or by calling a library function. *However due to portability of this constants they are rarely used, the constants are __GLIBC__, __GLIBC_MINOR__*. Refer: 'src/01-version'
   - Library function `gnu_get_libc_version()` to determine the version of libc.
 
 ## Checking return value
@@ -77,3 +77,7 @@ ldd <dynamically liked program> | grep libc
 - Few library function sets the errno and return error exactly as system call, and act similar to system calls failure. *for example: remove()*.
 - Few library function and set errno as system call, but return to -1. *for example: fopen()*. `perror()` or `strerror()` functions can be used to diagnose the error.
 - Other library functions doesn't use errno at all. Hence we cant use `perror()` and `strerror()`.
+
+## Trace a system call
+
+Know how to trace a system call made from a program. Refer 'src/02-strace'
