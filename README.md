@@ -59,7 +59,7 @@ ldd <dynamically liked program> | grep libc
 
 - always check return value, few system call/library function calls do NOT return values and are always success *for example: getpid()*
 
-### how to handle system call errors
+### how to handle errors
 
 **For system call failure**:
 
